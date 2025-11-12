@@ -1,0 +1,51 @@
+define function table_tracker(string name)
+(
+	assign (bool first T)
+	assign (string total [])
+	define string order(string food)
+	(
+		print ( string concat ( [Table] concat(name [ ordering] ) ) )
+		if (first 
+			(
+			assign (bool first F)
+			assign (string total food)
+			)
+			(
+			assign (string total concat (total concat ( [, ] food)))
+			)
+		)
+		send total
+	)
+  send order
+)
+
+define bool string_eq(string s1 string s2)
+ 	(
+		send and( ~(< (s1 s2)) ~(< (s2 s1)))
+	)
+
+assign (function table1 table_tracker([CS profs]))
+table1([Kimchi])
+
+print (string [Your name?])
+assign (function table2 table_tracker(input()))
+
+assign (bool done F)
+assign (string t2got [nothing])
+loop ( ~(done)
+		print (string [What do you want?])
+		assign (string food input())
+		if (string_eq(food [done])
+			(
+				assign (bool done T)
+			)
+			(
+				assign (function t2got table2(food))
+			)
+		)
+)
+table1([Tteokbokki])
+assign (function total1 table1([Samyeopsal]))
+
+print (string concat ([We got ] concat (total1 concat ([and you got ] t2got))))
+

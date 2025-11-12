@@ -1,0 +1,117 @@
+# SI413 Lab 4.1: Spec and interpreter for iffy language
+
+your_name: Tate Murphy
+
+your_alpha: 264542
+
+used_ai: Y # remember to turn in an aichat.md file as well
+
+# leave this as NONE for your initial submission
+changes_on_resubmit: |
+    NONE
+
+# describe any collaboration or help you got from classmates
+collaboration: |
+    NONE
+
+# come up with an original name for your new langauge
+language_name: Simple
+
+# explain a little what inspired your language and why it's cool
+language_explanation: |
+    In lab 2, before we had seen Scheme, I had the idea of making a function-based language. Although I didn't understand what that fully entailed, I thought I could simplify writing a language by making everything "like a function".
+
+# this is the example program that you make up
+example_program: |
+    &Example program for simple language&
+
+    print (string [Wow this is going to be so great])
+
+    define function lovemore(string s1 bool b)
+    (
+            if (b (assign (string s1 concat ([I love ] s1))) (assign (string s1 concat ([I hate ] s1))))
+            define string very()
+            (
+                    assign (string i [])
+                    loop (  <(s1 i)
+                            assign (string s1 concat (s1 [very]))
+                            assign (string i concat (i [.]))
+                            )
+                    assign (string s1 concat (s1 [much]))
+                    send s1
+            )
+            send very
+    )
+
+    print (string lovemore(input() T))
+
+example_input_1: |
+    tacos
+
+example_output_1: |
+    Wow this is going to be so great
+    I love tacos very very very very very much
+
+example_input_2: |
+    sleep
+
+example_output_2: |
+    Wow this is going to be so great
+    I love sleep very very very very very much
+
+
+# your implementation of the "dinner" program in your language
+dinner_program: |
+    define function table_tracker(string name)
+    (
+            assign (bool first T)
+            assign (string total [])
+            define string order(string food)
+            (
+                    print ( string concat ( [Table] concat(name [ ordering] ) ) )
+                    if (first 
+                            (
+                            assign (bool first F)
+                            assign (string total food)
+                            )
+                            (
+                            assign (string total concat (total concat ( [, ] food)))
+                            )
+                    )
+                    send total
+            )
+      send order
+    )
+
+    define bool string_eq(string s1 string s2)
+            ( send and (~(< (s1 s2)) ~(< (s2 s1))))
+
+    assign (function table1 table_tracker([CS profs]))
+    table1([Kimchi])
+
+    print (string [Your name?])
+    assign (function table2 table_tracker(input()))
+
+    assign (bool done F)
+    assign (string t2got [nothing])
+    loop ( ~(done)
+                    print (string [What do you want?])
+                    assign (string food input())
+                    if (string_eq(food [done])
+                            (
+                                    assign (bool done T)
+                            )
+                            (
+                                    assign (function t2got table2(food))
+                            )
+                    )
+    )
+    table1([Tteokbokki])
+    assign (function total1 table1([Samyeopsal]))
+
+    print (string concat ([We got ] concat (total1 concat ([and you got ] t2got))))
+
+
+# something else your instructor should know?
+any_other_comments_for_me: |
+    NONE

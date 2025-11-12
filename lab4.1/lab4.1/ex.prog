@@ -1,0 +1,20 @@
+&Example program for simple language&
+
+print (string [Wow this is going to be so great])
+
+define function lovemore(string s1 bool b)
+(
+	if (b (assign (string s1 concat ([I love ] s1))) (assign (string s1 concat ([I hate ] s1))))
+	define string very()
+	(
+		assign (string i [])
+		loop (  <(s1 i)
+			assign (string s1 concat (s1 [very]))
+			assign (string i concat (i [.]))
+			)
+		send s1
+	)
+	send very
+)
+
+print (string lovemore(input() T))
