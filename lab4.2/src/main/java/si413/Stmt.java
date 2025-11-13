@@ -27,6 +27,27 @@ public interface Stmt {
         }
     }
 
+    record FuncDef(String fname, Stmt.Block code) implements Stmt {
+        @Override
+        public void exec(Interpreter interp)
+        {
+            Value closure = new Value.closure(interp.getEnv(), code);
+            interp.getEnv().assign(fname, closure);
+        }
+    }
+
+    record FunCall(String fname) implements Stmt
+    {
+      @Override
+      public void exec(Interpreter interp)
+      {
+          Frame f = interp.getEnv();
+          Value v = f.lookup(fname);
+          Stmt.Block stb = v.functionCode();
+          stb.exec(interp);
+      }
+    }
+
 
     record Assign(String name, Expr child) implements Stmt {
         @Override

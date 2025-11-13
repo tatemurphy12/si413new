@@ -89,6 +89,31 @@ public class ASTGen {
                 eVis.visit(ctx.boolEx()),
                 stlVis.visit(ctx.stmtList()));
         }
+        @Override
+        public Stmt visitAssignFun(ParseRules.AssignFunContext ctx)
+        { return new Stmt.Block(List.of());}
+        @Override
+        public Stmt visitDefStrFun(ParseRules.DefStrFunContext ctx)
+        { return new Stmt.Block(List.of());}
+        @Override
+        public Stmt visitDefBoolFun(ParseRules.DefBoolFunContext ctx)
+        { return new Stmt.Block(List.of());}
+        @Override
+        public Stmt visitDefVoidFun(ParseRules.DefVoidFunContext ctx)
+        {
+            String fname = ctx.ID().getText();
+            //then get parameters when ready
+            return new Stmt.FuncDef(fname, stlVis.visit(ctx));
+        }
+        @Override
+        public Stmt visitDefFunFun(ParseRules.DefFunFunContext ctx)
+        { return new Stmt.Block(List.of());}
+        @Override
+        public Stmt visitVoidFunCall(ParseRules.VoidFunCallContext ctx)
+        {
+            String name = 
+            return new Stmt.FunCall(ctx.ID().getText());
+        }
 
     }
 

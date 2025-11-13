@@ -14,6 +14,16 @@ public interface Value {
         return Errors.error(String.format("Value type error: Expected boolean, got %s", toString()));
     }
 
+    default Frame environment()
+    {
+        return Errors.error(String.format("Value type error: Expected Frame, got %s", toString()));
+    }
+
+    default Stmt.Block functionCode()
+    {
+      return Errors.error(String.format("Value type error: Expected Stmt.Block, got %s", toString()));
+    }
+
     record Str(String value) implements Value {
         @Override
         public String str() { return value; }
@@ -30,5 +40,13 @@ public interface Value {
         public String toString() {
             return value ? "True" : "False";
         }
+    }
+    record Closure(Frame f, Stmt.Block s) implements Value
+    {
+        @Override
+        public Frame environment() {return f; }
+
+        @Override
+        public Stmt.Block functionCode() {return s; }
     }
 }
