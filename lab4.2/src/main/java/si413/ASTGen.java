@@ -111,13 +111,18 @@ public class ASTGen {
         @Override
         public Stmt visitVoidFunCall(ParseRules.VoidFunCallContext ctx)
         {
-            String name = 
-            return new Stmt.FunCall(ctx.ID().getText());
+            String name = eVis.visit(ctx.funcEx());
+            return new Stmt.VoidFunCall();
         }
 
     }
 
     private class ExprVisitor extends Visitor<Expr> {
+
+        @Override
+        public Expr visitFuncName(ParseRules.FuncNameContext ctx)
+        {
+        }
         @Override
         public Expr visitStrIdentity(ParseRules.StrIdentityContext ctx) {
             return visit(ctx.strEx());

@@ -36,7 +36,7 @@ public interface Stmt {
         }
     }
 
-    record FunCall(String fname) implements Stmt
+    record VoidFunCall(String fname) implements Stmt
     {
       @Override
       public void exec(Interpreter interp)
