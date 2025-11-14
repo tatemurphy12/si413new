@@ -1,0 +1,25 @@
+ASSIGN:     assign
+PRINT:      print
+TYPESTR:    string
+TYPEBOOL:   bool
+TYPEVOID:   void
+TYPEFUNC:   function
+DEF:        define
+RETURN:     send
+WHILE:      loop
+IF:         if
+CONCAT:     concat
+REV:        reverse
+IN:         input
+CON:        contains
+LT:         <
+AND:        and
+OR:         or
+NOT:        ~
+OPENEX:     \(
+CLOSEX:     \)
+BOOL:       T|F
+STR:        \[(?:\\.|[^\]\\])*\]
+ID:         [A-Za-z0-9_]+
+ignore:     &(\\.|[^\\&])*&
+ignore:     [ \t\n]
