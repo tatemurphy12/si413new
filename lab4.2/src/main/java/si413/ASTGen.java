@@ -122,6 +122,7 @@ public class ASTGen {
         @Override
         public Expr visitFuncName(ParseRules.FuncNameContext ctx)
         {
+            return 
         }
         @Override
         public Expr visitStrIdentity(ParseRules.StrIdentityContext ctx) {
